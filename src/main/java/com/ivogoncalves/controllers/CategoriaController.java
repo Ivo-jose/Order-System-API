@@ -1,17 +1,28 @@
 package com.ivogoncalves.controllers;
 
-import org.springframework.http.MediaType;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.ivogoncalves.domains.dtos.CategoryDTO;
+import com.ivogoncalves.services.CategoryService;
+import com.ivogoncalves.util.MediaType;
 
 
 @RestController
 @RequestMapping(value = "/api/category/v1")
 public class CategoriaController {
 
-	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	public String listar() {
-		return "REST is working";
+	@Autowired
+	private CategoryService service;
+	
+	@GetMapping(produces = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML})
+	public ResponseEntity<List<CategoryDTO>> findAll() {
+		List<CategoryDTO> listDTO = service.findAll();
+		return ResponseEntity.ok().body(listDTO);
 	}
 }
