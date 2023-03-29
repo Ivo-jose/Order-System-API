@@ -13,7 +13,7 @@ public class TestConfig {
 	private DBService dbService;
 	
 	@Bean
-	public void instantiateDB() {
+	void instantiateDB() {
 		dbService.instantitateDB();
 	}
 }
