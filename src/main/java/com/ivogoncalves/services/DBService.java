@@ -17,8 +17,8 @@ public class DBService {
 	
 	public void instantitateDB() {
 		
-		Category cat1 = new Category(1L, "Informática");
-		Category cat2 = new Category(2L, "Escritório");
+		Category cat1 = new Category(null, "Informática");
+		Category cat2 = new Category(null, "Escritório");
 		
 		categoryRepository.saveAll(Arrays.asList(cat1,cat2));
 	}
