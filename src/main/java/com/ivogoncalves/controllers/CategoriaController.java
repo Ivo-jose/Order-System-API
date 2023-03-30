@@ -1,5 +1,6 @@
 package com.ivogoncalves.controllers;
 
+import java.net.URI;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.ivogoncalves.domains.dtos.CategoryDTO;
 import com.ivogoncalves.services.CategoryService;
@@ -42,7 +44,8 @@ public class CategoriaController {
 			    )
 	public ResponseEntity<CategoryDTO> create(@RequestBody CategoryDTO objDTO) {
 		CategoryDTO obj = service.create(objDTO);
-		return ResponseEntity.ok().body(obj);
+		URI uri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/{id}").buildAndExpand(obj.getId()).toUri();
+		return ResponseEntity.created(uri).body(obj);
 	}
 	
 	@PutMapping(value = "/{id}" , consumes = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML},
@@ -59,5 +62,3 @@ public class CategoriaController {
 		return ResponseEntity.noContent().build();
 	}
 }
-
-//https://github.com/Ivo-jose/helpdesk-api/blob/main/src/main/java/com/ivogoncalves/helpdesk/resources/ClienteResource.java

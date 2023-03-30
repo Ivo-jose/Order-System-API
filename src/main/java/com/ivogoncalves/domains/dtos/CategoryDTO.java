@@ -1,8 +1,11 @@
 package com.ivogoncalves.domains.dtos;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ivogoncalves.domains.Category;
 
 
@@ -12,6 +15,9 @@ public class CategoryDTO implements Serializable {
 	
 	private Long id;
 	private String name;
+	
+	@JsonIgnore
+	private List<ProductDTO> products = new ArrayList<>();
 	
 	public CategoryDTO() {
 	}
@@ -37,9 +43,18 @@ public class CategoryDTO implements Serializable {
 		this.name = name;
 	}
 
+	
+	public List<ProductDTO> getProducts() {
+		return products;
+	}
+	
+	public void setProducts(List<ProductDTO> products) {
+		this.products = products;
+	}
+	
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, name);
+		return Objects.hash(id);
 	}
 
 	@Override
@@ -51,6 +66,6 @@ public class CategoryDTO implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		CategoryDTO other = (CategoryDTO) obj;
-		return Objects.equals(id, other.id) && Objects.equals(name, other.name);
+		return Objects.equals(id, other.id);
 	}
 }
