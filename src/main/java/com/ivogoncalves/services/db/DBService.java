@@ -33,7 +33,7 @@ public class DBService {
 		cat1.getProducts().addAll(Arrays.asList(p1,p3));
 		cat2.getProducts().addAll(Arrays.asList(p2));
 		
-		p1.getCategories().add(cat1);
+		p1.getCategories().addAll(Arrays.asList(cat1));
 		p2.getCategories().addAll(Arrays.asList(cat1,cat2));
 		p3.getCategories().addAll(Arrays.asList(cat1));
 		

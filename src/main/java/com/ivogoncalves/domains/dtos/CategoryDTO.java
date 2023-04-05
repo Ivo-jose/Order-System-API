@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.ivogoncalves.domains.Category;
 
 
@@ -16,7 +16,7 @@ public class CategoryDTO implements Serializable {
 	private Long id;
 	private String name;
 	
-	@JsonIgnore
+	@JsonManagedReference
 	private List<ProductDTO> products = new ArrayList<>();
 	
 	public CategoryDTO() {

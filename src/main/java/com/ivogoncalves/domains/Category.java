@@ -27,6 +27,7 @@ public class Category implements Serializable {
 	@Column(nullable = false, length = 100)
 	private String name;
 	
+	
 	@ManyToMany(mappedBy = "categories")
 	private List<Product> products = new ArrayList<>();
 	

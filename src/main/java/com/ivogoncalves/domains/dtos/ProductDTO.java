@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.ivogoncalves.domains.Product;
 
 
@@ -17,7 +18,7 @@ public class ProductDTO implements Serializable {
 	private String name;
 	private Double preco;
 	
-	
+	@JsonBackReference
 	List<CategoryDTO> categories = new ArrayList<>();
 
 	public ProductDTO() {}
