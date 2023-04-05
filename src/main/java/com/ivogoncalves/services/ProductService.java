@@ -31,7 +31,7 @@ public class ProductService {
 	
 	public ProductDTO findById(Long id) {
 		logger.info("Find  one Product!");
-		Product obj = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("No records found for this Id! ID:" + id));
+		Product obj = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("There are no records for this id! ID: " + id));
 		return mapper.map(obj, ProductDTO.class);
 	}
 }

@@ -31,7 +31,7 @@ public class CategoryService {
 	
 	public CategoryDTO findById(Long id) {
 		logger.info("Finding one Category!");
-		Category obj = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("No records found for this Id! ID: " + id));
+		Category obj = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("There are no records for this id! ID: " + id));
 		return mapper.map(obj, CategoryDTO.class);
 	}
 }
