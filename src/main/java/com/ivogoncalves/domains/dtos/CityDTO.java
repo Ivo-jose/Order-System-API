@@ -3,7 +3,7 @@ package com.ivogoncalves.domains.dtos;
 import java.io.Serializable;
 import java.util.Objects;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 public class CityDTO implements Serializable {
@@ -12,10 +12,11 @@ public class CityDTO implements Serializable {
 
 	private Long id;
 	private String name;
-	//Association
-	@JsonBackReference
-	private StateDTO state;
 	
+	//Association
+	@JsonManagedReference
+	private StateDTO state;
+
 	public CityDTO() {}
 
 	public CityDTO(Long id, String name, StateDTO state) {
@@ -64,4 +65,6 @@ public class CityDTO implements Serializable {
 		CityDTO other = (CityDTO) obj;
 		return Objects.equals(id, other.id) && Objects.equals(name, other.name) && Objects.equals(state, other.state);
 	}
+
+	
 }

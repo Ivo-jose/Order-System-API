@@ -5,12 +5,17 @@ import java.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ivogoncalves.domains.Address;
 import com.ivogoncalves.domains.Category;
 import com.ivogoncalves.domains.City;
+import com.ivogoncalves.domains.Customer;
 import com.ivogoncalves.domains.Product;
 import com.ivogoncalves.domains.State;
+import com.ivogoncalves.domains.enums.CustomerType;
+import com.ivogoncalves.repositories.AddressRepository;
 import com.ivogoncalves.repositories.CategoryRepository;
 import com.ivogoncalves.repositories.CityRepository;
+import com.ivogoncalves.repositories.CustomerRepository;
 import com.ivogoncalves.repositories.ProductRepository;
 import com.ivogoncalves.repositories.StateRepository;
 
@@ -25,7 +30,10 @@ public class DBService {
 	private StateRepository stateRepository;
 	@Autowired
 	private CityRepository cityRepository;
-	
+	@Autowired
+	private CustomerRepository customerRepository;
+	@Autowired
+	private AddressRepository addressRepository;
 	
 	public void instantitateDB() {
 		
@@ -65,5 +73,26 @@ public class DBService {
 		
 		stateRepository.saveAll(Arrays.asList(st1,st2));
 		cityRepository.saveAll(Arrays.asList(ct1,ct2,ct3));
+		
+		//Objects Customer
+		Customer cus1 = new Customer(null, "Maria Silva", "maria@gmail.com", "834.001.458-74", CustomerType.NATURAL_PERSON);
+		
+		//Add phones
+		cus1.getPhones().add("27363323");
+		cus1.getPhones().add("93838393");
+		
+		//Objects address
+		Address add1 = new Address(null, "Rua Flores", "300", "Apto 203", "Jardim", "38220384", cus1,ct1);
+		Address add2 = new Address(null, "Avenida Matos", "105", "Sala 800", "Centro", "38777012", cus1,ct2);
+		
+		
+		//Relationship
+		cus1.getAddress().addAll(Arrays.asList(add1,add2));
+		
+		
+		
+		
+		customerRepository.saveAll(Arrays.asList(cus1));
+		addressRepository.saveAll(Arrays.asList(add1,add2));
 	}
 }

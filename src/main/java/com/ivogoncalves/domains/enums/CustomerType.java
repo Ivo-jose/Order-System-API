@@ -2,7 +2,7 @@ package com.ivogoncalves.domains.enums;
 
 public enum CustomerType {
 
-	NATURAL_PERSON(0, "ROLE_NATURAL_PERSON"), LEGAL_PERSON(1, "ROLE_LEGAL_PERSON");
+	NATURAL_PERSON(0, "NATURAL_PERSON"), LEGAL_PERSON(1, "LEGAL_PERSON");
 	
 	private Integer code;
 	private String description;
@@ -15,7 +15,6 @@ public enum CustomerType {
 	public Integer getCode() {
 		return code;
 	}
-	
 	
 	public String getDescription() {
 		return description;

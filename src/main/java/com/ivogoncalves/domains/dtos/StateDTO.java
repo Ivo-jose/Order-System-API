@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 
 public class StateDTO implements Serializable{
@@ -15,7 +15,7 @@ public class StateDTO implements Serializable{
 	private Long id;
 	private String name;
 	//Association
-	@JsonManagedReference
+	@JsonBackReference
 	private List<CityDTO> cities = new ArrayList<>();
 	
 	public StateDTO() {}
