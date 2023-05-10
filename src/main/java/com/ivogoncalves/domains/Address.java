@@ -34,7 +34,7 @@ public class Address implements Serializable{
 	private String cep;
 
 	//Association
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne
 	@JoinColumn(name = "customer_id", nullable = false)
 	private Customer customer;
 	

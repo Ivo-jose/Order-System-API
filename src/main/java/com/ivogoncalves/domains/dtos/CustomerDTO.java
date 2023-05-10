@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.ivogoncalves.domains.Order;
 import com.ivogoncalves.domains.enums.CustomerType;
 
 public class CustomerDTO implements Serializable {
@@ -19,10 +21,11 @@ public class CustomerDTO implements Serializable {
 	private String cpfOrCnpj;
 	private Integer customerType;
 	
-	
+	@JsonBackReference
 	private List<AddressDTO> address = new ArrayList<>();
-	
 	private Set<String> phones = new HashSet<>();
+	@JsonBackReference
+	private List<Order> orders = new ArrayList<>();
 	
 	public CustomerDTO() {}
 

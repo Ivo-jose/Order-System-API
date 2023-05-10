@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class AddressDTO implements Serializable{
 
@@ -83,6 +84,7 @@ public class AddressDTO implements Serializable{
 		this.cep = cep;
 	}
 
+	@JsonIgnore
 	public CustomerDTO getCustomer() {
 		return customer;
 	}

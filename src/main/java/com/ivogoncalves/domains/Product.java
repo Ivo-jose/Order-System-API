@@ -2,8 +2,10 @@ package com.ivogoncalves.domains;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import com.ivogoncalves.domains.dtos.ProductDTO;
 
@@ -36,6 +38,8 @@ public class Product implements Serializable {
 				inverseJoinColumns = {@JoinColumn(name = "category_id")}
 	)
 	List<Category> categories = new ArrayList<>();
+	
+	private Set<ItemOrder> items = new HashSet<>();
 
 	public Product() {}
 
